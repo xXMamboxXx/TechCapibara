@@ -1,0 +1,75 @@
+/* Fondo animado con pulso suave */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #2f2f36;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f0f4f8;
+  overflow: hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: var(--mouseY, 30%);
+  left: var(--mouseX, 50%);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, #76ffd4 0%, transparent 70%);
+  opacity: 0.03;
+  animation: pulseGlow 6s ease-in-out infinite;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+  transition: top 0.1s ease-out, left 0.1s ease-out;
+}
+
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.03;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.08;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+/* Contenedor general */
+.screen-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  position: relative;
+}
+
+/* Caja de bienvenida */
+.welcome-box {
+  text-align: center;
+  padding: 48px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(142, 239, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(142, 239, 255, 0.08);
+  max-width: 600px;
+  backdrop-filter: blur(8px);
+}
+
+.welcome-box h1 {
+  font-size: 2.6rem;
+  color: #8defff;
+  margin-bottom: 20px;
+}
+
+.welcome-box p {
+  font-size: 1.15rem;
+  color: #e0f7fa;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}

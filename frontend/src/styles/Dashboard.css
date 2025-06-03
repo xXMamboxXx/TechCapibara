@@ -1,0 +1,70 @@
+.dashboard-layout {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-right: 1px solid rgba(142, 239, 255, 0.1);
+  padding: 20px;
+  backdrop-filter: blur(8px);
+  color: #e0f7fa;
+}
+
+.sidebar-title {
+  font-size: 1.5rem;
+  color: #8defff;
+  margin-bottom: 24px;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-nav li {
+  margin: 16px 0;
+  cursor: pointer;
+  color: #c2e9f3;
+  transition: color 0.2s;
+}
+
+.sidebar-nav li:hover {
+  color: #4efcb3;
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.dashboard-main h1 {
+  font-size: 2rem;
+  color: #8defff;
+}
+
+.dashboard-main p {
+  margin-bottom: 30px;
+  color: #e0f7fa;
+}
+
+.dashboard-widgets {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.widget-box {
+  flex: 1 1 200px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(142, 239, 255, 0.15);
+  padding: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 10px rgba(142, 239, 255, 0.05);
+  color: #e0f7fa;
+  font-weight: 500;
+}
