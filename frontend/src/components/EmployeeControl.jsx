@@ -41,17 +41,16 @@ function EmployeeControl() {
   }, []);
 
   return (
-    <div className="employee-control">
-      <h2>Control de Empleados</h2>
-      <div className="employee-actions">
-        <button onClick={cargarEmpleados}>🔁 Recargar</button>
-        <button>➕ Añadir empleado</button>
+    <div className="section-card">
+      <h2 className="page-title">Control de Empleados</h2>
+      <div className="section-actions">
+        <button className="btn btn-lg" onClick={cargarEmpleados}>🔁 Recargar</button>
       </div>
 
       {loading && <p>Cargando empleados...</p>}
       {error && <p className="error-message">⚠️ {error}</p>}
       {!loading && !error && (
-        <table className="employee-table">
+        <table className="table-default">
           <thead>
             <tr><th>Nombre</th><th>Cargo</th><th>Certificaciones</th></tr>
           </thead>

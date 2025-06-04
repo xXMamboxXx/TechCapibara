@@ -4,6 +4,7 @@ import EmployeeControl from './components/EmployeeControl'; // otros módulos pu
 import CertControl from './components/CertControl';
 import ProjectControl from './components/ProjectControl';
 import ToolControl from './components/ToolControl';
+import DashboardMatrix from './components/DashboardMatrix';
 import './styles/Dashboard.css';
 
 function Dashboard({ user }) {
@@ -21,9 +22,7 @@ function Dashboard({ user }) {
             <h1>Bienvenido, {user}</h1>
             <p>Este es tu panel de control. Selecciona una opción en el menú lateral.</p>
             <div className="dashboard-widgets">
-              <div className="widget-box">Proyectos activos: 12</div>
-              <div className="widget-box">Empleados certificados: 34</div>
-              <div className="widget-box">Herramientas en uso: 8</div>
+              <DashboardMatrix />
             </div>
           </>
         );
