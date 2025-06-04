@@ -1,16 +1,49 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles/Login.css';
+
+const USERS = [
+  { username: 'admin', password: 'admin123' },
+  { username: 'fabio', password: 'capibara' },
+  { username: 'dan', password: 'croissant' },
+];
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    // Cambia el título de la pestaña al cargar el componente
+    document.title = 'Iniciar sesión | Tech Capibara';
+
+    // Cambiar favicon si se desea (opcional)
+    const updateFavicon = (iconURL) => {
+      const link = document.querySelector("link[rel~='icon']");
+      if (link) {
+        link.href = iconURL;
+      } else {
+        const newLink = document.createElement('link');
+        newLink.rel = 'icon';
+        newLink.href = iconURL;
+        document.head.appendChild(newLink);
+      }
+    };
+
+    updateFavicon('/favicon-login.ico'); // Cambia esto por el favicon que desees
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (username.trim() && password.trim()) {
-      onLogin(username);
+
+    const userFound = USERS.find(
+      (user) => user.username === username && user.password === password
+    );
+
+    if (userFound) {
+      setErrorMessage('');
+      onLogin(userFound.username);
     } else {
-      alert('Por favor, complete todos los campos.');
+      setErrorMessage('⚠️ Usuario o contraseña incorrectos.');
     }
   };
 
@@ -22,6 +55,7 @@ function Login({ onLogin }) {
       <input
         id="username"
         type="text"
+        placeholder="Ingresa tu usuario"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         required
@@ -31,12 +65,15 @@ function Login({ onLogin }) {
       <input
         id="password"
         type="password"
+        placeholder="Ingresa tu contraseña"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
       />
 
       <button type="submit">Ingresar</button>
+
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
     </form>
   );
 }
